@@ -1,0 +1,13 @@
+*{box-sizing:border-box}
+body{font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;margin:0;background:#0f1221;color:#e7e9ff}
+.container{max-width:900px;margin:0 auto;padding:24px}
+header h1{margin:0 0 4px 0} header p{margin:0 0 16px 0;opacity:.8}
+.chatlog{background:#141936;border:1px solid #28306a;border-radius:12px;height:60vh;overflow:auto;padding:16px}
+.msg{padding:10px 12px;margin:10px 0;border-radius:10px;max-width:75%;white-space:pre-wrap;line-height:1.35}
+.msg.bot{background:#1b2147;border:1px solid #2f3a80}
+.msg.user{background:#28306a;margin-left:auto}
+.composer{display:flex;gap:8px;margin-top:12px}
+.composer input{flex:1;padding:12px;border-radius:10px;border:1px solid #28306a;background:#101436;color:#fff}
+.composer button{padding:12px 16px;border-radius:10px;border:0;background:#5c6cff;color:#fff;font-weight:600;cursor:pointer}
+.composer button:hover{opacity:.9}
+footer{margin-top:18px;opacity:.7}
