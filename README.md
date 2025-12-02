@@ -52,6 +52,8 @@ python app.py
 Then open:
 http://127.0.0.1:5000
 
+---
+
 ## 📁 Project Structure
 mun-nlp-chatbot-4750/
 │
@@ -75,6 +77,8 @@ mun-nlp-chatbot-4750/
 ├── README.md
 └── LICENSE
 
+---
+
 ## 🧑‍💻 Example Queries
 “What is Dr. Todd Wareham’s email?”
 “Where is Wareham’s office?”
@@ -83,11 +87,17 @@ mun-nlp-chatbot-4750/
 “What is Hatcher’s phone number?”
 “Which faculty is Professor X in?”
 
+---
+
 ## 📜 License
 Released under the MIT License (see LICENSE file).
 
+---
+
 ## 👨‍🏫 Instructor
 Dr. Todd Wareham
+
+---
 
 ## 👥 Authors
 Sharier Khan
