@@ -33,11 +33,11 @@ It uses regex-based intent detection, natural-language name extraction, and an S
 
 ## 📸 Screenshots & Media
 
-### Logo  
-(Place `logo.png` here)
+<!-- SCREENSHOTS_START -->
 
-### Demo GIF  
-(Place `demo.gif` here)
+_No screenshots yet – run `python update_screenshots.py` after adding images to the `screenshots/` folder._
+
+<!-- SCREENSHOTS_END -->
 
 ---
 
