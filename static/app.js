@@ -34,4 +34,18 @@ input.addEventListener('keydown', (e)=>{
 });
 
 // greeting
-addMsg("Hello! I can help with: where a building/room is, who teaches a course, and basic course info.\nTry: 'Where is EN-1051?', 'Who teaches COMP 4750?', or 'Info about CS 2000'.", 'bot');
+addMsg("Hello! I can help you with faculty information at MUN.\n\n" +
+"You can ask about any professor’s:\n" +
+"• Email\n" +
+"• Office / Room\n" +
+"• Phone Number\n" +
+"• Position / Title\n" +
+"• Faculty / Department\n" +
+"• Full summary of all details\n\n" +
+"Examples:\n" +
+"• “What is Dr. Todd Wareham’s email?”\n" +
+"• “Where is Professor Jane Smith’s office?”\n" +
+"• “What is Dr. X’s phone number?”\n" +
+"• “Which faculty is Prof. Y in?”\n" +
+"• “Tell me information about Dr. Z.”",
+"bot");

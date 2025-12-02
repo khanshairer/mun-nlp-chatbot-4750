@@ -2,17 +2,16 @@ from flask import Flask, render_template, request, jsonify
 from time import perf_counter
 import os
 
-from db import get_db, ensure_db
+from db import ensure_db
 from nlp.engine import ChatEngine
 
 app = Flask(__name__)
-engine = None
 
-@app.before_first_request
-def _init():
-    global engine
-    ensure_db()  # creates ./campus.db if missing and seeds it
-    engine = ChatEngine()
+# -----------------------------
+# Initialize DB + ChatEngine ON STARTUP
+# -----------------------------
+ensure_db()
+engine = ChatEngine()
 
 @app.get("/")
 def index():
