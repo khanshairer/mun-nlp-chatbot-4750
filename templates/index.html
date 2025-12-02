@@ -3,26 +3,47 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MUN Chat — Classical NLP</title>
+  <title>MUN NLP Faculty Chatbot</title>
   <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
   <div class="container">
     <header>
-      <h1>MUN Chat</h1>
-      <p>Classical NLP • Finite-State Dialogue • SQLite</p>
+      <h1>MUN NLP Faculty Chatbot</h1>
+      <p>Ask about MUN professors: email, office, phone, position, faculty, and more.</p>
     </header>
+
+    <div class="examples">
+      <span>Try:</span>
+      <button class="example-btn" data-example="What is Dr. Todd Wareham's email?">
+        Dr. Wareham’s email
+      </button>
+      <button class="example-btn" data-example="Where is Wareham's office?">
+        Wareham’s office
+      </button>
+      <button class="example-btn" data-example="Tell me about Pranjal Patra">
+        About Pranjal Patra
+      </button>
+      <button class="example-btn" data-example="Who's room is EN-2008?">
+        Who's room is EN-2008?
+      </button>
+    </div>
 
     <main>
       <div id="chatlog" class="chatlog"></div>
+
       <div class="composer">
-        <input id="msg" type="text" placeholder="Ask: faculty information at MUN!">
+        <div class="composer-main">
+          <input id="msg" type="text"
+                 placeholder="Ask: What is Dr. Todd Wareham's email?">
+          <div id="suggestions" class="suggestions"></div>
+        </div>
         <button id="send">Send</button>
       </div>
     </main>
 
     <footer>
-      <small>© 2025 MUN Chat (Course Project)</small>
+      <small>© 2025 MUN NLP Faculty Chatbot (COMP 4750 Project)</small>
     </footer>
   </div>
 

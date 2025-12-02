@@ -2,20 +2,19 @@ from flask import Flask, render_template, request, jsonify
 from time import perf_counter
 import os
 
-from db import ensure_db
+from db import ensure_db, suggest_prof_names
 from nlp.engine import ChatEngine
 
 app = Flask(__name__)
 
-# -----------------------------
-# Initialize DB + ChatEngine ON STARTUP
-# -----------------------------
 ensure_db()
 engine = ChatEngine()
+
 
 @app.get("/")
 def index():
     return render_template("index.html")
+
 
 @app.post("/chat")
 def chat():
@@ -25,6 +24,16 @@ def chat():
     dt = (perf_counter() - t0) * 1000.0
     print(f"[latency] {dt:.1f} ms  [state] {state}")
     return jsonify({"reply": reply, "state": state})
+
+
+@app.get("/suggest")
+def suggest():
+    q = request.args.get("q", "").strip()
+    if not q:
+        return jsonify([])
+    names = suggest_prof_names(q, limit=7)
+    return jsonify(names)
+
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", "5000"))

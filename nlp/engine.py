@@ -2,7 +2,7 @@ from nlp.tokenizer import tokenize
 from nlp.morph import normalize
 from nlp.intent import detect_intent, extract_prof_name, extract_office_code
 from nlp.fsa import FSA
-from db import find_prof_by_name, find_prof_by_office
+from db import find_prof_by_name, find_prof_by_office, find_prof_by_name_fuzzy
 
 HELP_TEXT = (
     "I can help you with faculty information at MUN.\n\n"
@@ -21,15 +21,18 @@ HELP_TEXT = (
     "• “Tell me information about Dr. Z.”"
 )
 
+
 class ChatEngine:
     def __init__(self):
         self.fsa = FSA()
 
     def respond(self, text: str):
         if not text:
-            return ("Please type a question, e.g., 'What is Dr. Todd Wareham’s email?'.", self.fsa.state)
+            return (
+                "Please type a question, e.g., 'What is Dr. Todd Wareham’s email?'.",
+                self.fsa.state,
+            )
 
-        # We still build tokens/lemmas if you want to use them later
         toks = tokenize(text)
         _lemmas = normalize(toks)
 
@@ -84,9 +87,20 @@ class ChatEngine:
             if not name:
                 return ("Which professor? Please include their full name.", state)
 
+            note = ""
             profs = find_prof_by_name(name)
+
             if not profs:
-                return (f"No professor matches '{name}'. Try their official name.", state)
+                # Fuzzy fallback
+                profs, corrected = find_prof_by_name_fuzzy(name)
+                if not profs:
+                    return (
+                        f"No professor matches '{name}'. Try their official name.",
+                        state,
+                    )
+                if corrected and corrected != name:
+                    note = f"(Assuming you meant {corrected}.)\n"
+
             if len(profs) > 1:
                 names = ", ".join(p["name"] for p in profs)
                 return (f"I found multiple matches: {names}. Please be more specific.", state)
@@ -94,23 +108,24 @@ class ChatEngine:
             p = profs[0]
 
             if intent == "PROF_EMAIL":
-                return (f"{p['name']}'s email: {p['email']}", state)
+                return (note + f"{p['name']}'s email: {p['email']}", state)
 
             if intent == "PROF_OFFICE":
-                return (f"{p['name']}'s office: {p['office']}", state)
+                return (note + f"{p['name']}'s office: {p['office']}", state)
 
             if intent == "PROF_PHONE":
-                return (f"{p['name']}'s phone number: {p['phone']}", state)
+                return (note + f"{p['name']}'s phone number: {p['phone']}", state)
 
             if intent == "PROF_POSITION":
-                return (f"{p['name']} is a {p['position']}", state)
+                return (note + f"{p['name']} is a {p['position']}", state)
 
             if intent == "PROF_FACULTY":
-                return (f"{p['name']} belongs to: {p['faculty']}", state)
+                return (note + f"{p['name']} belongs to: {p['faculty']}", state)
 
             if intent == "PROF_SUMMARY":
                 return (
-                    f"Information about {p['name']}:\n"
+                    note
+                    + f"Information about {p['name']}:\n"
                     f"- Position: {p['position']}\n"
                     f"- Email: {p['email']}\n"
                     f"- Office: {p['office']}\n"

@@ -1,13 +1,219 @@
-*{box-sizing:border-box}
-body{font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;margin:0;background:#0f1221;color:#e7e9ff}
-.container{max-width:900px;margin:0 auto;padding:24px}
-header h1{margin:0 0 4px 0} header p{margin:0 0 16px 0;opacity:.8}
-.chatlog{background:#141936;border:1px solid #28306a;border-radius:12px;height:60vh;overflow:auto;padding:16px}
-.msg{padding:10px 12px;margin:10px 0;border-radius:10px;max-width:75%;white-space:pre-wrap;line-height:1.35}
-.msg.bot{background:#1b2147;border:1px solid #2f3a80}
-.msg.user{background:#28306a;margin-left:auto}
-.composer{display:flex;gap:8px;margin-top:12px}
-.composer input{flex:1;padding:12px;border-radius:10px;border:1px solid #28306a;background:#101436;color:#fff}
-.composer button{padding:12px 16px;border-radius:10px;border:0;background:#5c6cff;color:#fff;font-weight:600;cursor:pointer}
-.composer button:hover{opacity:.9}
-footer{margin-top:18px;opacity:.7}
+/* ---------- Base layout ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.container {
+  max-width: 960px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+/* ---------- Header ---------- */
+
+header {
+  margin-bottom: 16px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+header p {
+  margin: 6px 0 0;
+  color: #4b5563;
+  font-size: 0.95rem;
+}
+
+/* ---------- Example buttons ---------- */
+
+.examples {
+  margin: 16px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+
+.examples span {
+  margin-right: 4px;
+}
+
+.example-btn {
+  border: 0;
+  border-radius: 999px;
+  padding: 6px 12px;
+  background: #2563eb;
+  color: #f9fafb;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.example-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+/* ---------- Chat card ---------- */
+
+main {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  min-height: 380px;
+}
+
+.chatlog {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 4px 8px 0;
+  margin-bottom: 10px;
+}
+
+/* Messages */
+
+.msg {
+  max-width: 80%;
+  margin-bottom: 8px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  white-space: pre-wrap;  /* important: keeps line breaks from the bot */
+}
+
+.msg.bot {
+  align-self: flex-start;
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.msg.user {
+  align-self: flex-end;
+  background: #2563eb;
+  color: #f9fafb;
+}
+
+/* ---------- Composer ---------- */
+
+.composer {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  margin-top: 4px;
+}
+
+.composer-main {
+  position: relative;
+  flex: 1;
+}
+
+.composer input {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.composer input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+#send {
+  border: none;
+  border-radius: 999px;
+  padding: 8px 14px;
+  background: #16a34a;
+  color: #f9fafb;
+  font-size: 0.9rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+#send:hover {
+  background: #15803d;
+  transform: translateY(-1px);
+}
+
+/* ---------- Autocomplete suggestions ---------- */
+
+.suggestions {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  margin-top: 4px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  max-height: 180px;
+  overflow-y: auto;
+  display: none;
+  z-index: 10;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+}
+
+.suggestion-item {
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: #111827;
+}
+
+.suggestion-item:hover {
+  background: #e5f0ff;
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  color: #6b7280;
+  text-align: left;
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 600px) {
+  .container {
+    margin: 16px auto;
+  }
+
+  main {
+    padding: 12px;
+  }
+
+  header h1 {
+    font-size: 1.4rem;
+  }
+
+  .msg {
+    max-width: 100%;
+  }
+}
