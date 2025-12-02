@@ -33,72 +33,73 @@ It uses regex-based intent detection, natural-language name extraction, and an S
 
 ## 📸 Screenshots & Media
 
-### Logo
+### Logo  
 (Place `logo.png` here)
 
-### Demo GIF
+### Demo GIF  
 (Place `demo.gif` here)
 
 ---
 
 ## 🚀 Installation
 
-```bash
-pip install -r requirements.txt
-Import faculty dataset:
-python import_faculty_from_excel.py
-Run chatbot:
-python app.py
+    pip install -r requirements.txt
+    python import_faculty_from_excel.py
+    python app.py
+
 Then open:
-http://127.0.0.1:5000
+
+    http://127.0.0.1:5000
 
 ---
 
 ## 📁 Project Structure
-mun-nlp-chatbot-4750/
-│
-├── app.py
-├── db.py
-├── import_faculty_from_excel.py
-├── data/
-│   └── all_faculty_full_combined.xlsx
-├── nlp/
-│    ├── intent.py
-│    ├── engine.py
-│    ├── fsa.py
-│    ├── morph.py
-│    └── tokenizer.py
-├── static/
-│    ├── style.css
-│    └── app.js
-├── templates/
-│    └── index.html
-│
-├── README.md
-└── LICENSE
+
+    mun-nlp-chatbot-4750/
+    │
+    ├── app.py
+    ├── db.py
+    ├── import_faculty_from_excel.py
+    ├── data/
+    │   └── all_faculty_full_combined.xlsx
+    ├── nlp/
+    │    ├── intent.py
+    │    ├── engine.py
+    │    ├── fsa.py
+    │    ├── morph.py
+    │    └── tokenizer.py
+    ├── static/
+    │    ├── style.css
+    │    └── app.js
+    ├── templates/
+    │    └── index.html
+    │
+    ├── README.md
+    └── LICENSE
 
 ---
 
 ## 🧑‍💻 Example Queries
-“What is Dr. Todd Wareham’s email?”
-“Where is Wareham’s office?”
-“Tell me about Pranjal Patra”
-“Who’s room is EN-2008?”
-“What is Hatcher’s phone number?”
-“Which faculty is Professor X in?”
+
+- “What is Dr. Todd Wareham’s email?”
+- “Where is Wareham’s office?”
+- “Tell me about Pranjal Patra”
+- “Who’s room is EN-2008?”
+- “What is Hatcher’s phone number?”
+- “Which faculty is Professor X in?”
 
 ---
 
-## 📜 License
+## 📜 License  
 Released under the MIT License (see LICENSE file).
 
 ---
 
-## 👨‍🏫 Instructor
+## 👨‍🏫 Instructor  
 Dr. Todd Wareham
 
 ---
 
-## 👥 Authors
-Sharier Khan
+## 👥 Authors  
+Sharier Khan  
 Md Mamun Rashid
