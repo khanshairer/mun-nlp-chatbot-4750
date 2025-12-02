@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+
+# venv
+.venv/
+venv/
+
+# macOS junk
+.DS_Store
+
+# SQLite DB
+campus.db
+
+# VS Code settings
+.vscode/
+
+# Python environment backups
+.env
