@@ -7,6 +7,17 @@ It uses regex-based intent detection, natural-language name extraction, and an S
 
 ---
 
+## 🔗 Live Demo
+
+Your can try the chatbot here:
+
+👉 https://mun-nlp-chatbot.onrender.com
+
+Note:
+This app is hosted on Render’s free tier, so it may take 10–20 seconds or little more sometimes to spin up (“cold start”) after periods of inactivity. Once it wakes up, performance is normal.
+
+---
+
 ## ✨ Features
 
 - Faculty lookup by:
