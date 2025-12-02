@@ -4,10 +4,21 @@ import os
 
 from db import ensure_db, suggest_prof_names
 from nlp.engine import ChatEngine
+from import_faculty_from_excel import main as import_faculty
 
 app = Flask(__name__)
 
+# ----- DB + data initialization -----
 ensure_db()
+
+try:
+    # Import / refresh faculty data from Excel into campus.db
+    import_faculty()
+    print("✅ Faculty data imported from Excel.")
+except Exception as e:
+    # If something goes wrong, app still runs, but with a warning
+    print(f"⚠️ Could not import faculty data from Excel: {e}")
+
 engine = ChatEngine()
 
 
