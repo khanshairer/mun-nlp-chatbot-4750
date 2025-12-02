@@ -35,7 +35,11 @@ It uses regex-based intent detection, natural-language name extraction, and an S
 
 <!-- SCREENSHOTS_START -->
 
-_No screenshots yet – run `python update_screenshots.py` after adding images to the `screenshots/` folder._
+**Autocomplete**  
+![Autocomplete](screenshots/autocomplete.png)
+
+**Chat Ui**  
+![Chat Ui](screenshots/chat-ui.png)
 
 <!-- SCREENSHOTS_END -->
 
